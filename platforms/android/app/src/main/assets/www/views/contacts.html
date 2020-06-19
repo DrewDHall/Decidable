@@ -1,0 +1,49 @@
+<div class="row nomargin InnertopHead">
+		<div class="container">
+			<h1><a ng-click="goBack();"> <img src="img/back-arrow.png" /> <span>Add Your Connections</span> </a></h1>
+		</div>
+	</div>
+	<div class="row nomargin ">
+		<div class="container">
+			<div class="row nomargin btnGroup">
+				<div class="col-xs-12 col-sm-12 col-md-12 nopadding">
+					<div class="input-group">
+					  <span class="input-group-btn">
+						<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+					  </span>
+					  <input type="text" class="form-control" ng-keyup="searchUser()" id="user_search" placeholder="Search">
+					</div>
+				</div>
+			</div>
+			
+		    <div class="row nomargin listofGroups">
+				<h4>YOUR CONNECTIONS</h4>
+				<div class="scrollbar-inner">
+					<table class="table">
+						<tr ng-repeat="user in allUsers">
+							<td>{{user.name}}</td>
+							<td></td>
+							<td align="right"><a ng-click="addContact(user.id)" ng-if="user.contact=='false'">ADD |</a><a ng-click="followContact(user.id)" ng-if="user.following=='false'"> FOLLOW |</a>  <a ng-click="unfollowContact(user.id)" ng-if="user.following=='true'">UNFOLLOW | </a><a ng-click="removeContact(user.id)" ng-if="user.contact=='true'">REMOVE</a></td>
+							<td>&nbsp</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<p class="emptyMessage" ng-show="emptyMessage">Sorry no users found!!</p>
+
+
+			<div class="invite_email_div col-xs-12 nomargin nopadding">
+				CAN'T FIND YOUR CONNECTIONS? </br>
+				You can always invite them by email!<p>
+            	</p>
+				<div class="col-xs-10 nomargin nopadding">
+					<input type="email" class="form-control" ng-model="inviteEmail" placeholder="Enter email" required>
+				</div>
+				<div class="col-xs-2 nomargin nopadding">
+					<button class="btn btn-default" ng-click="sendInviteEmail(inviteEmail)">Invite!</button>
+				</div>
+			</div>
+		</div>	
+</div>
+ 

@@ -1,0 +1,58 @@
+<div class="row nomargin InnertopHead">
+		<div class="container">
+			<h1><a href="" ng-click="goBack();"> <img src="img/back-arrow.png" /> <span>Question From You</span> </a></h1>
+		</div>
+	</div>
+	<div class="row nomargin QuestionfromYouPage">
+		<div class="container">
+			<div class="tabSec">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="active">
+						<a data-target="#home" role="tab" data-toggle="tab">
+							<i class="glyphicon glyphicon-align-left" aria-hidden="true"></i><span>Current</span>
+						</a>
+					</li>
+					<li>
+						<a data-target="#profile" role="tab" data-toggle="tab">
+							<i class="fa fa-compress" aria-hidden="true"></i><span>close</span>
+						</a>
+					</li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+						<div class="column" ng-repeat="question in questions">
+							<div class="row colum-one">
+								<div class="col-xs-8 col-sm-6 text-left nopadding"><p>{{question.question}}</p></div>
+								<div class="col-xs-4 col-sm-6 text-right nopadding"><p>2 days</p></div>
+							</div>
+							<div class="btnGroups">
+								<div class="btn-group" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">{{question.yes_count + question.no_count + question.maybe_count}}</button>
+								  <button type="button" class="btn btn-default">Yes ({{question.yes_count}})</button>
+								  <button type="button" class="btn btn-default">No ({{question.no_count}})</button>
+								  <!-- <button type="button" class="btn btn-default">Maybe ({{question.maybe_count}})</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="profile">
+						<div class="column" ng-repeat="question in closedQuestions">
+							<div class="row colum-one">
+								<div class="col-xs-8 col-sm-6 text-left nopadding"><p>{{question.question}}</p></div>
+								<div class="col-xs-4 col-sm-6 text-right nopadding"><p>2 days</p></div>
+							</div>
+							<div class="btnGroups">
+								<div class="btn-group" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">{{question.yes_count + question.no_count + question.maybe_count}}</button>
+								  <button type="button" class="btn btn-default">Yes ({{question.yes_count}})</button>
+								  <button type="button" class="btn btn-default">No ({{question.no_count}})</button>
+								  <!-- <button type="button" class="btn btn-default">Maybe ({{question.maybe_count}})</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

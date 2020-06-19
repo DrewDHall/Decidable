@@ -1,0 +1,107 @@
+<div class="row nomargin InnertopHead">
+		<div class="container">
+			<h1>
+				<!-- <a ng-click="goBack();">
+					<img src="img/back-arrow.png" /> <span>Respond to Q!</span> 
+				</a>
+				<img src="img/delete.png" ng-click="deleteQuestion()" class="create_quest_tick" ng-show="canDelete" /> -->
+				<a ng-click="goBack();">
+					<img src="img/back-arrow.png" /> 
+				</a>
+				<span>Respond to Q!</span> 
+				<img src="img/delete.png" ng-click="deleteQuestion()" class="create_quest_tick" ng-show="canDelete" />
+				<span class="boxImg moreBtn flRight" ng-click="showActionSheet(question.user_id, question.id, question.username, question.question);" ng-hide="canDelete" >...</span>
+			</h1>
+		</div>
+	</div>
+	<div class="row nomargin askQPage">
+		<div style="margin-top:10px;" class="question container">	
+			<div class="col-xs-12 text-center">Decision Date</div>
+        	<div class="col-xs-12 text-center"> {{dueDateW3 |  date :  "MMM dd,y" }} at {{dueDateW3 |  date :  "hh:mm a" }}</div>
+        </div>
+
+        <div style="text-align: center;text-align: center;border-top: 1px solid lightgray; margin-top: 1em; padding-top: 1em;font-size: 1.3em;">
+	        <img src="{{question.user_profile_photo}}" class="profilePicCircle" />
+			</br>
+			<div>{{question.username}}</div>
+		</div>
+
+		<div style="margin-top:10px;border: 1px solid lightgray;margin-left: 7px; margin-right: 7px;" class="question container"> 
+        	<!-- <div class="col-xs-12 text-center">Decision Date</div>
+        	<div class="col-xs-12 text-center"> {{dueDateW3 |  date :  "MMM dd,y" }} at {{dueDateW3 |  date :  "hh:mm a" }}</div> -->
+		<div class="text-center" >
+			<p>{{question.question}}</p>
+		</div>
+		<span class="sml-slider-righticon" ng-if="questImage">
+			<img src="img/right-arrow.png">
+		</span>
+		<span class="sml-slider-lefticon pull-left" ng-if="questImage">
+			<img src="img/left-arrow.png" >
+		</span>
+		<div class="regular slider" ng-if="questImage">
+			<div ng-repeat="image in questImage">
+		      <div class="item">		        
+		        <!-- <div class="lpimg"> <img ng-src="{{image}}" class="img-res quest-image" /> </div> -->
+		        <div class="lpimg"> <div style="background-image:url('{{image}}');" class="questionImage img-res quest-image"> </div> </div>
+		        <div class="carousel-caption">
+		          <div class="landingPageTxt">		            
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		</div>
+		<!--<div class="text-center">
+			References : 
+			<ul>
+				<li ng-repeat="reference in references">{{reference}}</li>	
+			</ul>
+		</div>-->
+			<div>
+				<div class="ynBtn" ng-show="isAnswered==false">
+					<div class="row nomargin">
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="greenBorder select-ans select-ans-yes" ng-click="selectAnswer($event)" data-val="yes">
+							  <!--<p>Yes</p>-->
+							  Yes
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="redBorder select-ans" ng-click="selectAnswer($event)" data-val="no">
+							  <!--<p>No</p>-->
+							  No
+							</div>
+						</div>                            
+					</div>
+					<p style="margin-top:15px; border-bottom:0px;"><textarea placeholder="Why?" class="form-control" ng-model="question.why"></textarea></p>
+					<!-- <p ng-show="question.post_anonymous==1" class="res_any">Respond anonymous: <input type="radio" ng-model="question.anonymous" value="yes" /> Yes <input type="radio" ng-model="question.anonymous" ng-checked="true" value="no" /> No </p> -->
+					<p ng-show="question.reply_anonymous==1" class="res_any">Respond anonymous: <input type="radio" ng-model="question.anonymous" value="yes" /> Yes <input type="radio" ng-model="question.anonymous" ng-checked="true" value="no" /> No </p>
+				</div>
+				<div class="row nomargin answer_percent" ng-if="isAnswered==true">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="greenBorder"><p><span ng-if="yesCount > 0">{{(yesCount) / (yesCount + noCount) * 100 | number:2}}</span ><span ng-if="yesCount == 0">0</span>%</p></div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="redBorder"><p><span ng-if=" noCount > 0">{{(noCount) / (yesCount + noCount) * 100 | number:2}}</span><span ng-if="noCount == 0">0</span>%</p></div>
+					</div>
+				</div>
+			</div>
+			<button class="btn btn-default fullwidth BlueBtn" ng-click="submitAnswer()" ng-if="isAnswered==false">Share Your Response!</button>
+			<!-- <button class="btn btn-default fullwidth BlueBtn" ng-if="isAnswered==true">You already answered this question</button> -->
+
+			<hr>
+
+			<div ng-if="login_user_owner_answer!=''" class="marginTopCls text-center" style="font-size: 13px;margin-top: 1em;" >
+				<div style="text-decoration: underline;" >My Answer</div>
+				<div style="text-transform: uppercase;margin-top: 7px;" >{{login_user_owner_answer}}</div>
+				<div ng-if="login_user_owner_answer_why!=null" style="margin-top: 7px;">"{{login_user_owner_answer_why}}"</div>
+			</div>
+
+			<hr>
+
+			<div ng-if="owner_answer!=''" class="marginBottomCls text-center" style="font-size: 13px;" >
+				<div style="text-decoration: underline;" >Decision</div>
+				<div style="text-transform: uppercase;margin-top: 7px;;" >{{owner_answer}}</div>
+				<div ng-if="owner_answer_why!=null" style="margin-top: 7px;">"{{owner_answer_why}}"</div>
+			</div>
+		</div>	
+	</div>

@@ -1,0 +1,76 @@
+<div class="row nomargin InnertopHead">
+		<div class="container">
+			<h1><a ng-click="goBack();"> <img src="img/back-arrow.png" /> <span>Curate Your Interests</span> </a></h1>
+		</div>
+	</div>
+	<div style="height:100px;text-align: center;margin-left:18%;margin-right:18%;margin-top: 2em;">
+		<div style="width:30%; float:left;" ng-click="changeIsApproved(1);">
+			<img src="img/category.png">
+			<div style="font-size: 1.2em;" class="{{categoryTab}}" >Categories</div>
+		</div>
+		<div style="width:30%; float:right;" ng-click="changeIsApproved(0);">
+			<img src="img/groups.png">
+			<div style="font-size: 1.2em;" class="{{teamTab}}" >Teams</div>
+		</div>
+	</div>
+	<div class="input-group" style="margin-left: 15px; margin-right: 15px; margin-bottom: 5px;">
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+		</span>
+		<input type="text" class="form-control" ng-keyup="searchCategory()" id="category_search" placeholder="Search">
+	</div>
+	<div class="row nomargin helpPage">
+		<div class="container">
+			<div class="tabSec">
+				<!--<ul class="nav nav-tabs" role="tablist">
+					<li class="active">
+						<a data-target="#home" role="tab" data-toggle="tab">							
+							<span>Groups</span>
+						</a>
+					</li>
+					<li>
+						<a data-target="#profile"  role="tab" data-toggle="tab">
+							<span>users</span>
+						</a>
+					</li>
+				</ul>-->
+				<!-- Tab panes -->
+				<div class="tab-content" >
+					<div role="tabpanel" class="tab-pane active" id="home" style="overflow-y: auto;">
+						<div class="row nomargin col-row categoryItems" ng-repeat="category in categories" ng-show="category.approved==isApproved" name="{{category.name}}">
+							<div class="col-xs-5 col-sm-4 title"><p style="font-size:16px;"><strong>{{category.name}}</strong></p></div>
+							<div class="col-xs-5 col-sm-4 Subtitle"><p ng-hide="category.id == 0">{{category.follwerscount}} Responders</p></div>
+							<div class="col-xs-2 col-sm-4 Subtitle">
+								<div class="checkbox">
+									<!-- <input type="checkbox"  id="checkboxOne{{category.id}}" value="{{category.id}}" ng-checked="{{category.is_followed}}" name="followGroup">  -->
+									<!-- <label class="check-box" for="checkboxOne{{category.id}}"></label> -->
+
+									<label for="checkboxOne{{category.id}}" class="switch" style="padding-left: 2px;">
+						  		 		<input  ng-checked="{{category.is_followed}}" id="checkboxOne{{category.id}}"  type="checkbox"  data-size="mini" name="followGroup" value="{{category.id}}"/>
+						  			  	<div class="slider"></div>
+						  		  	</label>
+
+									<!-- <div class="RadioBtn col-xs-2 col-sm-2 nopadding cq-btn">
+							  		 	<label class="switch">
+							  		 		<input checked="true" type="checkbox"  data-size="mini" ng-model="quest.postAnonymous"/>
+							  			  	<div class="slider"></div>
+							  		  	</label>
+							  		</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- <button class="btn btn-default btnAsFooter" ng-click="follow()">Update</button> -->
+					<div role="tabpanel" class="tab-pane" id="profile">
+						<div class="row nomargin col-row" ng-repeat="user in users">
+							<div class="col-xs-6 col-sm-4 title"><p style="font-size:16px;"><strong>{{user.name}}</strong></p><!--<p><img src="img/delete-users-icon.png" /></p>--></div>
+							<div class="col-xs-2 col-sm-4 Subtitle"><!--<p class="text-left">0</p>--></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <button class="btn btn-default noMargin" ng-click="follow()">Update</button> -->
+</div>
+<button class="btn btn-default btnAsFooter" ng-click="follow()">Update</button>

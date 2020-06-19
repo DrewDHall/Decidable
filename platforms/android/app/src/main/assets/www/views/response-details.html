@@ -1,0 +1,60 @@
+<div class="row nomargin InnertopHead">
+		<div class="container">
+			<h1>
+				<a ng-click="goBack();"> <img src="img/back-arrow.png" /> <span>Responses to your Q!</span> </a>
+				<img src="img/delete.png" ng-click="deleteQuestion()" class="create_quest_tick" ng-show="canDelete" />
+			</h1>
+		</div>
+	</div>
+	<div class="row nomargin helpPage">
+		<div class="container" style="padding-top:10px;" >
+			<div class="col-xs-12 text-center"> {{dueDateW3 |  date :  "MMM dd,y" }} at {{dueDateW3 |  date :  "hh:mm a" }}</div>
+			<p class="res_ques"  style="padding-top:20px;" >{{question.question}}</p>
+			<!-- <p class="totalcnt">{{(yesCount + noCount)}}  Response(s) <span>Open {{daysLeft}} days</span></p> -->
+			<p class="totalcnt" style="font-size: 12px;" >{{(yesCount + noCount)}}  Response(s) <span style="border: 1px solid lightgray; padding: 3px; margin-right: -16px; padding-right: 10px; font-size: 12px;">{{yesCount}} - Yes | {{noCount}} - No</span></p>
+			<!-- <p  class="yn_cnt">{{yesCount}} - Yes | {{noCount}} - No</p> -->
+			<div class="row" style="border: 1px solid lightgray;
+    padding: 10px 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-top: 2em !important;">
+				<div class="col-xs-6 col-sm-6 col-md-6">
+					<div class="greenBorder" ng-click="answerQuestionClick('yes',question.id)"><p><span ng-if="yesCount > 0">{{(yesCount) / (yesCount + noCount) * 100 | number:2}}</span ><span ng-if="yesCount == 0">0</span>%</p></div>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6">
+					<div class="redBorder" ng-click="answerQuestionClick('no',question.id)"><p><span ng-if=" noCount > 0">{{(noCount) / (yesCount + noCount) * 100 | number:2}}</span><span ng-if="noCount == 0">0</span>%</p></div>
+				</div>
+			</div>
+			<!-- <p  class="yn_cnt">{{yesCount}} - Yes | {{noCount}} - No</p> -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12 resbox" ng-repeat="response in responses" style="margin-top: 10px;margin-top: 10px; border: 1px solid lightgray; margin-right: 0px; margin-left: 0px; border-right: 0px; border-left: 0px; padding: 5px;" >
+					<div class="col-xs-6 res_name">{{response.anonymous_reply == 'yes' ? 'Anonymous' : response.answered_by.name}}</div>
+					<div class="col-xs-2 ans" >{{response.answer}}</div>
+					<div class="col-xs-4 text-right date">{{response.answered_at |  date :  "MM/dd/y" }}</div>
+					<div class="col-xs-12" ng-if="response.answer_why" >Why: {{response.answer_why}}</div>
+					<!-- <textarea ng-if="response.answer_why" class="form-control" style="overflow: scroll;" readonly="">{{response.answer_why}}</textarea> -->
+				</div>
+			</div>
+		</div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Let your responders know why!</h4>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control text-box tareaBox" placeholder="I've decided to ... because ..." maxlength="255"   required="" id="decision_box" ng-model="decisionreason"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="closeModal()">Go Back</button>
+          <button type="button" class="btn btn-default" ng-click="submitModal()">Complete my Decision</button>
+      </div>
+    </div>
+
+  </div>
+</div>

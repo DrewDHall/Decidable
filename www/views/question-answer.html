@@ -1,0 +1,92 @@
+<div>
+  <div class="row nomargin InnertopHead">
+    <div class="container">
+      <h1><a href="" ng-click="goBack();"> <img src="img/back-arrow.png" /> <span>Decisions</span> </a></h1>
+    </div>
+  </div>
+  <div class="row nomargin QuestionfromYouPage">
+    <div class="container">
+      <div class="tabSec">
+        <ul class="nav nav-tabs" role="tablist">
+          <li> <a data-target="#home" role="tab" data-toggle="tab"> <i class="glyphicon glyphicon-align-left" aria-hidden="true"></i><span>Open</span> </a> </li>
+          <li> <a data-target="#profile" role="tab" data-toggle="tab"> <i class="fa fa-balance-scale" aria-hidden="true"></i><span>Pending</span> </a> </li>
+          <li> <a data-target="#profile2" role="tab" data-toggle="tab"> <i class="fa fa-compress" aria-hidden="true"></i><span>Closed</span> </a> </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="currentTab"><p></p>
+                <p>UPCOMING DECISIONS</p>
+              <div class="ctRows" ng-repeat="question in questions">
+                <h5 ng-click="changePage('response-details/{{question.id}}')" style="color:#337ab7;text-decoration: underline">+ {{question.question}}</h5> 
+                <p>{{(question.yes_count + question.no_count)}} Responses</p>
+                <div class="row nomargin">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="greenBorder">
+                      <p><span ng-if="question.yes_count > 0">{{(question.yes_count) / (question.yes_count + question.no_count) * 100 | number:2}}</span ><span ng-if="question.yes_count == 0">0</span>%</p>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="redBorder">
+                      <p><span ng-if="question.no_count > 0">{{(question.no_count) / (question.yes_count + question.no_count) * 100 | number:2}}</span><span ng-if="question.no_count == 0">0</span>%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="profile">
+            <div class="currentTab"><p></p>
+                <p>DECISIONS YOU NEED TO MAKE...</p>
+              <div class="ctRows" ng-repeat="question in closingQuestions">
+                <h5 ng-click="changePage('response-details/{{question.id}}')" style="color:#337ab7;text-decoration: underline">+ {{question.question}}</h5>
+                <p>{{question.yes_count + question.no_count}} Responses</p>
+                <div class="row nomargin">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="greenBorder" ng-click="answerQuestionClick('yes',question.id)">
+                      <p><span ng-if="question.yes_count > 0">{{(question.yes_count) / (question.yes_count + question.no_count) * 100 | number:2}}</span ><span ng-if="question.yes_count == 0">0</span>%</p>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="redBorder" ng-click="answerQuestionClick('no',question.id)">
+                      <p><span ng-if="question.no_count > 0">{{(question.no_count) / (question.yes_count + question.no_count) * 100 | number:2}}</span><span ng-if="question.no_count == 0">0</span>%</p> 
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="profile2">
+            <div class="currentTab"><p></p>
+              <p>DECISIONS YOU'VE ALREADY MADE!</p>
+              <div class="ctRows" ng-repeat="question in closedQuestions">
+                <h5 ng-click="changePage('response-details/{{question.id}}')" style="color:#337ab7;text-decoration: underline">+ {{question.question | limitTo : 100 : 0}}</h5>
+                <p>{{question.yes_count + question.no_count + question.maybe_count}} Responses</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Let your responders know why!</h4>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control text-box tareaBox" placeholder="I've decided to ... because ..." maxlength="255"   required="" id="decision_box" ng-model="decisionreason"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="closeModal()">Go Back</button>
+          <button type="button" class="btn btn-default" ng-click="submitModal()">Complete my Decision</button>
+      </div>
+    </div>
+
+  </div>
+</div>

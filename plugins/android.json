@@ -1,0 +1,55 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "phonegap-plugin-push": {
+      "FCM_VERSION": "11.6.2",
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "skwas-cordova-plugin-datetimepicker": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-wkwebview-engine": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-wkwebviewxhrfix": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    },
+    "cordova-plugin-email-composer": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.quarkproduction.app"
+    }
+  }
+}

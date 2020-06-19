@@ -1,0 +1,25 @@
+<div class="row nomargin InnertopHead">
+		<div class="container">
+			<h1><a ng-click="goBack();"> <img src="img/back-arrow.png" /> <span>Followers</span> </a></h1>
+		</div>
+	</div>
+	<div class="row nomargin user-followers">
+		<div class="container">
+			<div class="tabSec">
+				
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+						<div class="row nomargin col-row" ng-repeat="follower in followers" ng-click="changePage('view-profile/{{follower.user_id}}')">
+							<div class="col-xs-1 col-sm-1">&nbsp;</div>
+							<div class="col-xs-3 col-sm-3 title"><img class="img-responsive" ng-src="{{follower.avatar}}"></div>
+							<div class="col-xs-5 col-sm-4 username"><p>{{follower.user.name}}</p></div>
+							<div class="col-xs-2 col-sm-4 cnt">{{follower.follwer_count}}</div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+</div>

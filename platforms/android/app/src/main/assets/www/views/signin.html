@@ -1,0 +1,88 @@
+<div class="container text-center signinPage" >
+	<img src="img/Header.png" class="img-res home-screen" style="margin-top: 10%;" />
+	<div class="front" >
+		<!-- <img src="img/Header.png" class="img-res home-screen" style="margin-top: 10%;" /> -->
+		<h1>Sign up</h1>
+		<form name="signUpForm" ng-submit="signUpUser(signUpForm.$valid)" id="signUpForm"  method="POST" novalidate>
+		<div class="formDiv signupForm">
+			
+				<div class="form-group">
+					<div class="input-group input-group-lg">
+					  <!-- <span class="input-group-addon" ><img src="img/username-icon.png" /></span> -->
+					  <span class="input-group-addon" ><img src="img/id-card-small.png" /></span>
+					  <input type="text" class="form-control floating-placeholder" placeholder="Username" aria-describedby="sizing-addon1" ng-model="user.username" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group input-group-lg">
+					  <!-- <span class="input-group-addon" ><img src="img/email-icon.png" /></span> -->
+					  <span class="input-group-addon" ><img src="img/paper-plane-small.png" /></span>
+					  <input type="email" class="form-control floating-placeholder" placeholder="Email" aria-describedby="sizing-addon1" ng-model="user.email"  required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group input-group-lg">
+					  <!-- <span class="input-group-addon" ><img src="img/password-icon.png" /></span> -->
+					  <span class="input-group-addon" ><img src="img/beakers-small.png" /></span>
+					  <input type="password" class="form-control floating-placeholder" placeholder="Password" aria-describedby="sizing-addon1" ng-model="user.password" required>
+					</div>
+				</div>
+					<div class="terms">
+					<div class="lt"><input type="checkbox" class="terms" /> </div>
+					<div class="rt">I have read and accept the <a href="" ng-click="changePage('terms');">Terms of Service</a> and <a href="" ng-click="changePage('privacy');">Privacy Policy</a></div>
+					</div>
+				<div class="signinPagebtn" style="margin-top:30%;">
+				<!-- 	<button class="btn btn-default" type="submit">Sign Up</button> -->
+					<input type="submit" data-role="none"  class="btn btn-default" value="Sign Up">
+					<!--<button class="btn btn-default">Login with Facebook</button>
+					<button class="btn btn-default">Login with Twitter</button>-->
+					<p><!--Don't have an account? &nbsp;--><a ng-click="flipPage()">Sign in</a></p>
+
+					<p ng-if="showChangeServer"><!--Don't have an account? &nbsp;--><a ng-click="changeServerUrl()">Change Server</a></p>
+				</div>
+			
+		</div>
+		
+		</form>
+	</div>
+
+
+
+
+
+
+	<div class="back" style="display:none;" >
+		<!-- <img src="img/Header.png" class="img-res home-screen" style="margin-top: 10%;" /> -->
+		<h1>Sign In</h1>
+		<div class="formDiv signinformDiv">
+			<form name="signInForm" ng-submit="signInUser(signInForm.$valid)" id="signInForm"  method="POST" novalidate>
+				<div class="form-group">
+					<div class="input-group input-group-lg">
+					  <!-- <span class="input-group-addon" ><img src="img/username-icon.png" /></span> -->
+					  <span class="input-group-addon" ><img src="img/id-card-small.png" /></span>
+					  <input type="text" class="form-control floating-placeholder" placeholder="Username" aria-describedby="sizing-addon1" ng-model="signin.username" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group input-group-lg">
+					  <!-- <span class="input-group-addon" ><img src="img/password-icon.png" /></span> -->
+					  <span class="input-group-addon" ><img src="img/beakers-small.png" /></span>
+					  <input type="password" class="form-control floating-placeholder" placeholder="Password" aria-describedby="sizing-addon1" ng-model="signin.password" required>
+					</div>
+				</div>			
+				<div class="terms">
+					<div class="lt"><input type="checkbox" class="terms" /> </div>
+					<div class="rt">I have read and accept the <a href="" ng-click="changePage('terms');">Terms of Service</a> and <a href="" ng-click="changePage('privacy');">Privacy Policy</a></div>
+				</div>
+				<div class="signinPagebtn" style="float: left; width:100%;">
+					<!-- <button class="btn btn-default">Sign In</button> -->
+					<input type="submit" data-role="none"  class="btn btn-default" value="Sign In">
+					<p ng-click="changePage('reset-password')">Forgot username or password</p>
+					<p>Don't have an account? &nbsp; <a ng-click="flipPage()">Sign up</a></p>
+				</div>
+			</form>
+		</div>
+		
+	</div>
+	
+</div>

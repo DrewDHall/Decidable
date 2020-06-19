@@ -1,0 +1,19 @@
+<div class="row nomargin InnertopHead">
+  <div class="container">
+    <h1><a href="" ng-click="goBack();"><img src="img/back-arrow.png" /> <span>How-to Guides</span> </a></h1>
+  </div>
+</div>
+<div class="row nomargin helpPage">
+  <div class="container">
+   <p> Learn how to use all of the features on Decidable! </p>
+    <div class="faq_container">
+      <!-- Question 01 -->
+      <div class="faq" ng-repeat="help in helps">
+        <div class="faq_question"><span>Q:</span>{{help.question}}</div>
+        <div class="faq_answer_container">
+          <div class="faq_answer"><span>A:</span> {{help.answer}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

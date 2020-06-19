@@ -1,0 +1,115 @@
+<div id="o-wrapper" class="o-wrapper">
+		<div class="container text-center HomePage">
+			<div class="c-buttons" style="position: relative;" >
+				<button id="c-button--slide-left" class="c-button"><i class="fa fa-bars" aria-hidden="true"></i></button>
+				<div class="header-image-div">
+					<img src="img/Header.png" class="img-responsive header-image">
+				</div>
+				
+				<!-- <a href="" ng-click="changePage('questfrom-me');" class="callBulb pull-right text-right"><img src="img/q-for-me.png" class="img-responsive" /><span class="mqcount" ng-hide="myQaBadge == 0">{{myQaBadge}}</span></a> -->
+                
+			</div>
+			<div class="row nomargin">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopadding">
+				<div class="scrollmenu">
+					<!-- <a ng-click="questByCategory(0)">ALL</a> -->
+					<a ng-click="questByCategory(-1)" id="category-1" class="selectedCategory">Following</a>
+                   <!-- <a ng-click="questFromFollowing()">FOLLOWING</a>-->
+					<a ng-repeat="cat in categories" id="category{{cat.id}}" ng-click="questByCategory(cat.id)">{{cat.name}}</a>
+				</div>
+				</div>
+			</div>
+			<div class="row nomargin dashboardbox scrollingListCls">
+				<!-- <div class="Bbox {{question.is_answered == true ?'answered-quest' : ''}}" ng-repeat="question in questions track by question.id" ng-click="changePage('answer-question/{{question.id}}/dashboard')"> -->
+				<div class="Bbox {{question.is_answered == true ?'answered-quest' : ''}}" ng-repeat="question in questions track by question.id" ng-click="questionClick($event, 'answer-question/{{question.id}}/dashboard', false, {{question.user_id}})" style="padding-left:5px;" >
+					<!-- <img src="img/landing2.png" class="profileOnQ" /> -->
+					<img src="{{question.user_profile_photo}}" class="profileOnQ" />
+					
+					<div>
+						<!-- <div class="row" > -->
+						<div>
+							<!-- <div class="col-xs-6 col-sm-6 col-md-6 boxpara"> -->
+							<div class="heightOneHalfEm">
+								<span ng-click="questionClick($event, 'get-user-question-list/{{question.user_id}}/{{user.id}}', true)" ng-if="question.post_anonymous!=1 && userId != question.user_id" >
+									<span class="userLink flLeft">{{question.username}}</span>
+								</span>
+								<span ng-if="question.post_anonymous==1 || userId == question.user_id" class="flLeft" >{{question.username}}</span>
+								<span class="boxImg leftdays flRight" >{{question.timeCountDown}}...</span>
+							</div>
+						</div>
+						<div class="boxTxt qtext" >{{question.question}}</div>
+					</div>
+
+				</div>
+				<!--<div ng-if="noData" class="welcom-text">“Welcome to Decidable!” Add your interests and follow people to get things moving</div>-->
+				<!-- <div ng-if="noData" class="welcom-text">Be the first to Create a Q!</div> -->
+				<div ng-if="noData" class="welcom-text">
+					<div>Welcome!</div>
+					<div class="marginTopCls">Decidable helps you and your connections make better decisions.</div>
+					<div class="marginTopCls">We're glad you're here.</div>
+					<div class="marginTopCls" style="font-size:16px;" ng-click="changePage('landing')">
+						<a href="#">Take the Tour</a>
+					</div>
+				</div>
+				<div ng-repeat="question in questions">
+					<p ng-if="$last" ng-click="loadMore(0)" ng-hide="loadMoreButton">Load more</p>
+				</div>
+			</div>
+			<div class="FooterMenu">
+				<ul class="FtMenu">
+					<li><a href="" ng-click="changePage('contacts');">
+						<img src="img/connect-icon.png" />
+						<span>Connect</span>
+					</a></li>
+					<li><a href="" ng-click="changePage('followers');">
+						<img src="img/boards.png" />
+						<span>Curate</span>
+					</a></li>
+					<li class="lt"><a href="" ng-click="changePage('createquest');">
+						<img src="img/create-q-icon.png" />
+						<span>Ask</span>
+					</a></li>
+					<li class="lt"><a href="" ng-click="changePage('questfrom-me');">
+						<img src="img/q-for-me.png" />
+						<span>Decide</span>
+						<span class="badgeFooterBtn" ng-hide="myQaBadge == 0">{{myQaBadge}}</span>
+					</a></li>
+					<li><a href="" ng-click="changePage('questtome');">
+						<img src="img/get-answers-small-icon.png" />
+						<span>Direct Q!s</span>
+						<span class="badgeFooterBtn" ng-hide="qForMeBadge == 0">{{qForMeBadge}}</span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
+  <div class="menuHeader">
+    <div class="inner"> 
+      	<!-- <div class="profile-img"> -->
+      	<div ng-click="changePage('myprofile');">
+      		<img ng-src="{{userAvatar}}" class="img-responsive img-full img-circle img-responsive sidemenu-pic" />
+      	</div>
+		<!-- <h2 class="txtCenter" ng-click="changePage('myprofile');">{{user.name}}</h2> -->
+		<h2 class="txtCenter" >{{user.name}}</h2>
+		<a class="mailId txtCenter">{{user.email}}</a>
+    </div>
+  </div>
+  <button class="c-menu__close" style="visbility:hidden;display:none;"></button>
+  <ul class="c-menu__items">
+    
+    <li class="c-menu__item" ng-click="changePage('get-answered-questions');"><img src="img/comment.png" class="c-menu-img" /><a class="c-menu__link">Answered Q</a></li>
+     <!-- <li class="c-menu__item" ng-click="changePage('myprofile');" ><img src="img/user_sidebar.png" class="c-menu-img" /><a class="c-menu__link">Profile</a></li>
+      <li class="c-menu__item" ng-click="changePage('user-followers');" ><img src="img/connect-icon.png" class="c-menu-img" /><a class="c-menu__link">Followers</a></li>-->
+    <li class="c-menu__item" ng-click="changePage('help');"><img src="img/q-for-me.png" class="c-menu-img" /><a class="c-menu__link">How-to Guide</a></li>
+    <li class="c-menu__item" ng-click="shareApp('Follow me {{user.name}} on Decidable and share your opinions!', 'http://quarktest.socializer.io/images/profilePhoto.png', 'https://www.decidable.co/downloadnow');"><img src="img/Sharable.png" class="c-menu-img" /><a class="c-menu__link">Share App</a></li>
+    <li class="c-menu__item"><img src="img/exit_sidebar.png" class="c-menu-img" /><a ng-click="logout()" class="c-menu__link">Sign Out</a></li>
+
+    <li class="c-menu__item" ng-if="showChangeServer"><img src="img/exit_sidebar.png" class="c-menu-img" /><a ng-click="changeServerUrl()" class="c-menu__link">Change Server</a></li>
+
+    <li class="c-menu__item" ng-if="showChangeServer"><img src="img/exit_sidebar.png" class="c-menu-img" /><a ng-click="getPushNotificationToken()" class="c-menu__link">Push Token</a></li>
+
+  </ul>
+</nav>
+<div id="c-mask" class="c-mask"></div>

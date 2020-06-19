@@ -1,0 +1,43 @@
+<div class="row nomargin InnertopHead">
+	<div class="container">
+		<h1>
+			<a ng-click="goBack();">
+				<!-- <img src="img/back-arrow.png" /> -->
+				<img src="img/back-arrow.png" /> 
+				<!-- <span>{{username}}</span> -->
+			</a>
+			<img src="img/delete.png" ng-click="deleteQuestion()" class="create_quest_tick" ng-show="canDelete" />
+			<img src="{{avatar}}" style="margin-right: 24px;" class="profilePicCircle" />
+			</br>
+			<div>{{username}}</div>
+			<div style="margin-top: 7px;">
+				<a ng-controller="ContactsController" ng-click="addContact(userId)" ng-if="isContact=='false'" style="width:40%;float:left;text-align: right;font-size: 0.8em;">ADD </a>
+				<a ng-controller="ContactsController" ng-click="removeContact(userId)" ng-if="isContact=='true'" style="width:40%;float:left;text-align: right;font-size: 0.8em;">REMOVE </a>
+				<a ng-controller="ContactsController" ng-click="followContact(userId)" ng-if="isFollowing=='false'" style="width:45%;float:right;text-align: left; margin-left: 10px;font-size: 0.8em;"> FOLLOW </a>
+				<a ng-controller="ContactsController" ng-click="unfollowContact(userId)" ng-if="isFollowing=='true'" style="width:45%;float:right;text-align: left; margin-left: 10px;font-size: 0.8em;"> UNFOLLOW </a>
+			</div>
+		</h1>
+	</div>
+</div>
+
+<div class="container text-center askQPage">
+	<div class="row nomargin dashboardbox">
+		<!-- <div class="Bbox {{question.is_answered == true ?'answered-quest' : ''}}" ng-repeat="question in questions track by question.id" ng-click="changePage('answer-question/{{question.id}}/dashboard')"> -->
+		<div class="Bbox {{question.is_answered == true ?'answered-quest' : ''}}" ng-repeat="question in questions" ng-click="changePage('answer-question/{{question.id}}/dashboard')">
+			<div class="row" >
+				<div class="col-xs-6 col-sm-6 col-md-6 boxpara">
+					<p>{{question.username}}</p>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 boxImg">
+					<ul>
+					<li class="leftdays">{{question.days_left}} {{question.days_left == 1 ?'day' : 'days'}} left</li>
+					</ul>
+				</div>
+			</div>
+			<div class="boxTxt qtext" >{{question.question}}</div>
+		</div>
+		<div ng-if="noData" class="welcom-text">No question available!</div>
+	</div>
+</div>
+
+<div id="c-mask" class="c-mask"></div>

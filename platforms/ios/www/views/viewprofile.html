@@ -1,0 +1,43 @@
+<div class="row nomargin InnertopHead">
+		<div class="container nopadding">
+			<h1 class="profilehead"><a href="#" ng-click="goBack();"> <img src="img/back-arrow.png" /> <span>Profile</span> </a></h1>
+		</div>
+	</div>
+	<div class="row nomargin profileSec">
+		<div class="container">
+			<h3>{{visitor.name}}</h3>
+			<div class="profilePhoto">
+				<img src="{{visitorAvatar}}" class="img-circle img-responsive" id="profileImageIndex"/>
+			</div>
+			<h3 class="subTitle">Member Since {{memberSince}}</h3>
+			<h4>Location: Irvine, CA</h4>
+			<div class="row nomargin shareIcons text-center">
+				<div class="col-xs-6 col-sm-6 shareIcon">
+					<i class="fa fa-share-alt"></i>
+					<p>Following</p>
+				</div>
+				<div class="col-xs-6 col-sm-6 shareIcon">
+					<i class="fa fa-share-alt"></i>
+					<p>Q's from me</p>
+				</div>
+			</div>
+			<div class="row nomargin shareprofs">
+				<div class="col-xs-6 col-sm-6 shareprof text-left"><h2>Facebook</h2></div>
+				<div class="col-xs-6 col-sm-6 shareprof">
+					<label class="switch"><input type="checkbox" />
+						  <div class="slider"></div>
+					  </label>
+				</div>
+			</div>
+			<div class="row nomargin shareprofs">
+				<div class="col-xs-6 col-sm-6 shareprof text-left"><h2>Twitter</h2></div>
+				<div class="col-xs-6 col-sm-6 shareprof">
+					<label class="switch"><input checked="true" type="checkbox" />
+						  <div class="slider"></div>
+					  </label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	

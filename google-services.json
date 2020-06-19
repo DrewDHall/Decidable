@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "156810497999",
+    "firebase_url": "https://quark-beta.firebaseio.com",
+    "project_id": "quark-beta",
+    "storage_bucket": "quark-beta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156810497999:android:b4ee2b6b3f6eaca8",
+        "android_client_info": {
+          "package_name": "com.quarkproduction.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156810497999-upkdhj282njl462cjbm1p2d89o6fpcon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfM-9_dN4GfpjJdYY8qJk6GTPIvszdWCE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
